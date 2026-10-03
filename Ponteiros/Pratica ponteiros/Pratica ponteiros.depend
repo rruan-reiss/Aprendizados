@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1791065522 source:c:\users\rianl\documents\code blocks\aprendizados\ponteiros\pratica ponteiros\main.c
+	<stdio.h>
+	<stdlib.h>
+	<locale.h>
+
