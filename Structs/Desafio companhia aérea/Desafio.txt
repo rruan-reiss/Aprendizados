@@ -1,0 +1,36 @@
+Utilizando os conceitos de Funções e Structs, resolva o problema abaixo de acordo com os itens solicitados:
+
+Faça um programa que efetue reserva de passagens aéreas de uma certa companhia. O programa deverá ler informações sobre 
+os vôos (número, origem e destino) juntamente com o número de lugares disponíveis para 12 aviões (um vetor para cada 
+um desses dados). O programa deverá apresentar um menu com as seguintes opções:
+
+Consultar;
+Efetuar Reserva;
+Sair.
+
+Quando a opção escolhida for Consultar deverá ser disponibilizado mais um menu com as seguintes opções:
+
+Por número de vôo;
+Por origem;
+Por destino.
+Quando a opção escolhida for Efetuar Reserva deverá ser perguntado o número do vôo no qual a pessoa deseja viajar.
+
+O programa deverá dar as seguintes respostas:
+
+Reserva confirmada – caso exista o vôo e lugar disponível, dando baixa nos lugares disponíveis;
+Vôo lotado – caso não exista lugar disponível nesse vôo;
+Vôo inexistente – caso o código do vôo não exista.
+A opção sair é a única que permite sair do programa. Sendo assim, após cada operação de consulta ou reserva o programa
+volta ao menu principal.
+
+OBS.: Pode ser criado uma função para cada item exigido no problema, da mesma forma a struct ou como acharem melhor.
+
+Após implementar o código responda:
+
+1 – Qual a(s) diferença(s) entre variáveis locais e variáveis globais.
+
+2 – Qual(ais) a(s) vantagem(ens) de utilizar funções na programação?
+
+3 – Qual(ais) a(s) dificuldade(s) encontrada(s) na programação? Caso não houver dificuldade deixe a resposta em branco.
+
+4 – Na sua opinião o que são Registros (Structs) e para que servem?
