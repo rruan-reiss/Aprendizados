@@ -2,19 +2,18 @@
 #include <string.h>
 
 #define MAXVOOS 2
-#define MAX_NOME 20
+#define MAX_NOME 25
 
 /*Estrutura*/
 typedef struct{
     int numVoo;
-    char origem[20];
-    char destino[20];
+    char origem[MAX_NOME];
+    char destino[MAX_NOME];
     int vagas;
 } Voo;
 
 /*Protótipos*/
 Voo cadastrarVoo(int ordem);
-/*void mostrarVoo(Voo v[], int ordem);*/
 void porNum(Voo v[]);
 void porOrigem(Voo v[]);
 void porDestino(Voo v[]);
@@ -41,6 +40,7 @@ int main(){
             case 1:
                 printf("1.Por numero de voo\n2.Por Origem\n3.Por destino\n");
                 scanf("%d", &consulta);
+                getchar();
                 if(consulta == 1){
                     porNum(voo);
                 }else if(consulta == 2){
@@ -85,25 +85,66 @@ Voo cadastrarVoo(int ordem){
 
 void porNum(Voo v[]){
     int i;
+    int num;
+    int busca=0;
     printf("|CONSULTA POR NUMERO|\n\n");
+    printf("Digite o numero do voo: ");
+    scanf("%d", &num);
     for(i=0; i<MAXVOOS; i++){
-        printf("O voo de numero [%d] tem %d locais disponiveis\n", v[i].numVoo, v[i].vagas);
+        if(v[i].numVoo==num){
+        busca=1;
+        printf("\nVoo de numero [%d]\n", v[i].numVoo);
+        printf("Com origem de [%s] para [%s]\n", v[i].origem, v[i].destino);
+        printf("Acentos disponiveis: %d.\n", v[i].vagas);
+        break;
+        }
+    }
+    if (busca != 1){
+        printf("Numero de voo invalido.\n");
     }
 }
 
 void porOrigem(Voo v[]){
     int i;
+    char origem[MAX_NOME];
+    int busca=0;
     printf("|CONSULTA POR ORIGEM|\n\n");
+    printf("Digite a origem do voo: ");
+    fgets(origem, MAX_NOME, stdin);
+    origem[strcspn(origem, "\n")] = '\0'; /*retirar '\n'*/
+    
     for(i=0; i<MAXVOOS; i++){
-            printf("O voo com origem [%s] tem %d locais disponiveis\n", v[i].origem, v[i].vagas);
+        if(strcmp(origem, v[i].origem)==0){
+        busca=1;
+        printf("\nVoo de numero [%d]\n", v[i].numVoo);
+        printf("Com origem de [%s] para [%s]\n", v[i].origem, v[i].destino);
+        printf("Acentos disponiveis: %d.\n", v[i].vagas);
+        }
+    }
+    if (busca != 1){
+        printf("A origem do voo é invalida.\n");
     }
 }
 
 void porDestino(Voo v[]){
     int i;
+    char destino[MAX_NOME];
+    int busca=0;
     printf("|CONSULTA POR DESTINO|\n\n");
+    printf("Digite a destino do voo: ");
+    fgets(destino, MAX_NOME, stdin);
+    destino[strcspn(destino, "\n")] = '\0'; /*retirar '\n'*/
+    
     for(i=0; i<MAXVOOS; i++){
-           printf("O voo com destino para [%s] tem %d locais disponiveis\n", v[i].destino, v[i].vagas);
+        if(strcmp(destino, v[i].destino)==0){
+        busca=1;
+        printf("\nVoo de numero [%d]\n", v[i].numVoo);
+        printf("Com origem de [%s] para [%s]\n", v[i].origem, v[i].destino);
+        printf("Acentos disponiveis: %d.\n", v[i].vagas);
+        }
+    }
+    if (busca != 1){
+        printf("A destino do voo é invalida.\n");
     }
 }
 
@@ -119,19 +160,16 @@ void efetuarReserva(Voo v[]){
 
     for(i=0; i<MAXVOOS; i++){
         if(v[i].numVoo==num){
-            vooSelec=v[i];
             test=1;
-            if(vooSelec.vagas>0){
+            if(v[i].vagas>0){
                 printf("Reserva confirmada!\n");
-                vooSelec.vagas--;
-                v[i].vagas=vooSelec.vagas;
-            }else if (vooSelec.vagas==0){
+                v[i].vagas--;
+            }else{
                 printf("Este voo ja esta com lotacao maxima.\n");
             }
-
-        }else if(test==0){
-            printf("Voo inexistente.\n");
-
+            break; /* interromper o laço apos encontrar*/    
         }
+    }if(test!=1){
+        printf("Voo inexistente.\n");
     }
 }
