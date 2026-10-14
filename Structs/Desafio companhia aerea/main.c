@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#define MAXVOOS 2
+#define MAXVOOS 12
 #define MAX_NOME 25
 
 /*Estrutura*/
@@ -18,11 +18,10 @@ void porNum(Voo v[]);
 void porOrigem(Voo v[]);
 void porDestino(Voo v[]);
 void efetuarReserva(Voo v[]);
+void menu (Voo v[]);
 
 int main(){
     int i;
-    int menu;
-    int consulta;
     Voo voo[MAXVOOS];
 
     printf("|Cadastro de Voos|\n");
@@ -30,36 +29,7 @@ int main(){
         voo[i] = cadastrarVoo(i+1);
     }
 
-    do{
-        printf("|MENU|\n\n");
-        printf("1.CONSULTAR\n2.EFETUAR RESERVA\n0.SAIR\n");
-        scanf("%d", &menu);
-
-        switch (menu){
-
-            case 1:
-                printf("1.Por numero de voo\n2.Por Origem\n3.Por destino\n");
-                scanf("%d", &consulta);
-                getchar();
-                if(consulta == 1){
-                    porNum(voo);
-                }else if(consulta == 2){
-                    porOrigem(voo);
-                }else if(consulta == 3){
-                    porDestino(voo);
-                }
-                break;
-            case 2:
-                efetuarReserva(voo);
-                break;
-            case 0:
-                printf("ENCERRADO\n");
-                break;
-            default:
-                printf("\nOpcao Invalida\n");
-                break;
-        }
-    }while(menu != 0);
+    menu(voo);
 
     return 0;
 }
@@ -83,6 +53,42 @@ Voo cadastrarVoo(int ordem){
     return v;
 }
 
+void menu (Voo v[]){
+    int menu;
+    int consulta;
+
+    do{
+        printf("\n|MENU|\n\n");
+        printf("1.CONSULTAR\n2.EFETUAR RESERVA\n0.SAIR\n");
+        scanf("%d", &menu);
+
+        switch (menu){
+
+            case 1:
+                printf("1.Por numero de voo\n2.Por Origem\n3.Por destino\n");
+                scanf("%d", &consulta);
+                getchar();
+                if(consulta == 1){
+                    porNum(v);
+                }else if(consulta == 2){
+                    porOrigem(v);
+                }else if(consulta == 3){
+                    porDestino(v);
+                }
+                break;
+            case 2:
+                efetuarReserva(v);
+                break;
+            case 0:
+                printf("ENCERRADO\n");
+                break;
+            default:
+                printf("\nOpcao Invalida\n");
+                break;
+        }
+    }while(menu != 0);
+
+}
 void porNum(Voo v[]){
     int i;
     int num;
@@ -95,7 +101,7 @@ void porNum(Voo v[]){
         busca=1;
         printf("\nVoo de numero [%d]\n", v[i].numVoo);
         printf("Com origem de [%s] para [%s]\n", v[i].origem, v[i].destino);
-        printf("Acentos disponiveis: %d.\n", v[i].vagas);
+        printf("Acentos disponiveis: %d\n", v[i].vagas);
         break;
         }
     }
@@ -118,7 +124,7 @@ void porOrigem(Voo v[]){
         busca=1;
         printf("\nVoo de numero [%d]\n", v[i].numVoo);
         printf("Com origem de [%s] para [%s]\n", v[i].origem, v[i].destino);
-        printf("Acentos disponiveis: %d.\n", v[i].vagas);
+        printf("Acentos disponiveis: %d\n", v[i].vagas);
         }
     }
     if (busca != 1){
@@ -140,7 +146,7 @@ void porDestino(Voo v[]){
         busca=1;
         printf("\nVoo de numero [%d]\n", v[i].numVoo);
         printf("Com origem de [%s] para [%s]\n", v[i].origem, v[i].destino);
-        printf("Acentos disponiveis: %d.\n", v[i].vagas);
+        printf("Acentos disponiveis: %d\n", v[i].vagas);
         }
     }
     if (busca != 1){
@@ -154,7 +160,7 @@ void efetuarReserva(Voo v[]){
     int test=0;
     Voo vooSelec;
 
-    printf("|EFETUAR RESERVA|\n");
+    printf("\n|EFETUAR RESERVA|\n");
     printf("\nDigite o numero do voo: ");
     scanf("%d", &num);
 
