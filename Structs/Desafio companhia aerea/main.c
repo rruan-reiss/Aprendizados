@@ -37,7 +37,7 @@ int main(){
 Voo cadastrarVoo(int ordem){
     Voo v;
 
-    printf("Voo n%d\n", ordem);
+    printf("\nVoo n%d\n", ordem);
     printf("Numero do voo: ");
     scanf("%d", &v.numVoo);
     getchar(); /*Limpar o '\n'*/
@@ -49,7 +49,8 @@ Voo cadastrarVoo(int ordem){
     v.destino[strcspn(v.destino, "\n")] = '\0';
     printf("Quantidade de lugares disponiveis: ");
     scanf("%d", &v.vagas);
-
+    printf("\n-------------------------------------------------------------------\n");
+    
     return v;
 }
 
