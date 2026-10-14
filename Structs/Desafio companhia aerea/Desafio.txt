@@ -29,8 +29,16 @@ Após implementar o código responda:
 
 1 – Qual a(s) diferença(s) entre variáveis locais e variáveis globais.
 
+R: A variavel global atua fora da main e funciona em todo o codigo, já a local é criada e usada apenas dentro da sua respectiva estrutura. 
+
 2 – Qual(ais) a(s) vantagem(ens) de utilizar funções na programação?
+
+R: Organização do codigo, possibilidade de expansão e facilidade na hora de consertar bugs futuros.
 
 3 – Qual(ais) a(s) dificuldade(s) encontrada(s) na programação? Caso não houver dificuldade deixe a resposta em branco.
 
+R: Ainda não domino a biblioteca de strings em certos momentos tive dificuldade para logicas com a origem e destino.
+
 4 – Na sua opinião o que são Registros (Structs) e para que servem?
+
+R: Basicamente é um forma de organizar banco de dados em um vetor.
